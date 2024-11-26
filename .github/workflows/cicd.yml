@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Pull image from docker hub
-        run: docker pull kabizzle/CookItBackend:latest
+        run: docker pull kabizzle/cookit-backend:latest
 
       - name: Run Docker container
         run: docker run -d -p 4000:4000 --name cookit-backend-container -e MONGODB_URI='${{secrets.MONGODB_URI}}'' -e JWT_SECRET='${{secrets.JWT_SECRET}}'
