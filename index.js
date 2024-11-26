@@ -33,8 +33,16 @@ const server = new ApolloServer({
   resolvers,
 });
 
+// Configure CORS options
+const corsOptions = {
+  origin: 'http://localhost:3000', // Change this to the allowed frontend URL(s)
+  methods: 'GET, POST',
+  allowedHeaders: 'Content-Type, Authorization',
+};
+
 startStandaloneServer(server, {
   listen: { port: 4000 },
+  cors: corsOptions,
   context: async ({ req, res }) => {
     const auth = req ? req.headers.authorization : null;
     if (auth && auth.startsWith("Bearer ")) {
